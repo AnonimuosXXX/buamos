@@ -1,18 +1,17 @@
-# Indica la imagen base que utilizarás
+# Imagen base
 FROM python:3.9
 
-# Establece el directorio de trabajo dentro del contenedor
+# Directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos necesarios al directorio de trabajo
-COPY requirements.txt .
-COPY sample_app.py .
+# Copia los archivos de la aplicación al contenedor
+COPY . .
 
-# Instala las dependencias del proyecto
-RUN pip install --no-cache-dir -r requirements.txt
+# Instala las dependencias
+RUN pip install -r requirements.txt
 
-# Expone el puerto en el que se ejecutará la aplicación
+# Configura el puerto de la aplicación
 EXPOSE 9999
 
-# Define el comando que se ejecutará cuando se inicie el contenedor
+# Comando para ejecutar la aplicación
 CMD ["python", "sample_app.py"]
